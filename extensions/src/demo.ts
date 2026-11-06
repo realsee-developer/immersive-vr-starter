@@ -1,6 +1,6 @@
 import { parseWork } from '@realsee/five'
 import { Vector3 } from 'three'
-import workData from '@realsee/open-works/virtual/816lPVZQkQDF5XOpPo/work.json'
+import workData from './real-demo-work.json'
 import { createSpatialInterface } from './dnalogel/viewer'
 import { addTextHotspot } from './dnalogel/tags'
 import { bindMeasurement } from './dnalogel/measure'

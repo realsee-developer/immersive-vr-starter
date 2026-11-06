@@ -42,7 +42,7 @@ export default function CapabilityLab() {
     async function start() {
       try {
         const work = await import(
-          "@realsee/open-works/virtual/816lPVZQkQDF5XOpPo/work.json"
+          "../real-demo-work.json"
         );
         controller.signal.throwIfAborted();
         scene = await mountScene(host.current!, work.default, controller.signal);

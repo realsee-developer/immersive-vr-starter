@@ -13,7 +13,7 @@ const require = createRequire(import.meta.url);
 const { Five, parseWork } = require("@realsee/five");
 const sdkRequire = createRequire(require.resolve("@realsee/five"));
 const publicWork = require(
-  "@realsee/open-works/virtual/816lPVZQkQDF5XOpPo/work.json"
+  "../src/real-demo-work.json"
 );
 
 test("the pinned SDK parses the bundled public Work and exports the task APIs", () => {

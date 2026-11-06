@@ -69,7 +69,7 @@ export function createTour(host: HTMLElement, onChange: (state: TourState) => vo
           ? requestApi<{ work: unknown }>('/api/team/work', {
               method: 'POST', body: JSON.stringify({ sceneHandle: vr.sceneHandle }), signal: request.signal,
             }).then((result) => result.work)
-          : import('@realsee/open-works/virtual/816lPVZQkQDF5XOpPo/work.json').then((module) => module.default),
+          : import('./real-demo-work.json').then((module) => module.default),
       ]);
       if (disposed || generation !== sceneGeneration) return;
       const five = new Five({ imageOptions: { size: 1024 }, poweredByRealsee: false });

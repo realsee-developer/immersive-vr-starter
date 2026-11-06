@@ -62,3 +62,7 @@ Restart, open **Spaces**, and choose a listed Team space. An empty directory is 
 ## License
 
 This template retains **PolyForm Noncommercial License 1.0.0** verbatim from the existing `realsee-developer` Quickstart projects, with the same package license declaration. See [LICENSE](LICENSE). Dependencies retain their own licenses and terms.
+
+## Public photographed Work source
+
+The bundled `src/real-demo-work.json` is the official photographed sample from https://github.com/realsee-developer/dnalogel/tree/f7111018ab6ee8bcde7c6008ddf635cfc9b5aa03/open-works/real/80o024DE2xyva3j5BE . Its SHA-256 is `ebfd41d61c2f100f4dbbe303896c01b578c27888c952114bd39b852df45af6c7`. It has 15 capture viewpoints. Original signatures and public CDN references are retained. This public sample does not establish access to a user's Team data.
