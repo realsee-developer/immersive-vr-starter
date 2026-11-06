@@ -1,0 +1,44 @@
+{
+  "name": "realsee-immersive-vr-starter",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "configure": "node scripts/configure-device.ts",
+    "dev": "node scripts/dev.mjs",
+    "typecheck": "vue-tsc --noEmit && tsc --noEmit -p tsconfig.server.json",
+    "test": "node --test tests/*.test.ts",
+    "build": "vue-tsc --noEmit && tsc -p tsconfig.server.json && vite build",
+    "start": "node --env-file-if-exists=.env dist/server/index.js",
+    "check": "npm run typecheck && npm test",
+    "setup": "node scripts/select-framework.mjs"
+  },
+  "dependencies": {
+    "@realsee/api": "0.1.11",
+    "@realsee/five": "6.9.2",
+    "@realsee/open-works": "0.1.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "three": "0.117.1",
+    "vue": "3.5.45"
+  },
+  "overrides": {
+    "@realsee/five": {
+      "protobufjs": "8.8.1"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "6.0.3",
+    "typescript": "6.0.3",
+    "vite": "8.1.4",
+    "@vitejs/plugin-vue": "6.0.10",
+    "vue-tsc": "3.3.14"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0"
+}

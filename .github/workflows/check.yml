@@ -1,0 +1,22 @@
+name: Check immersive template
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        framework: [react, vue, typescript]
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run setup -- --framework ${{ matrix.framework }}
+      - run: npm run check
+      - run: npm run build

@@ -1,0 +1,3 @@
+.lab-shell { color: #172337; background: #fbfcfe; min-height: 100dvh; }
+.lab-shell .eyebrow { font-size: 10px; letter-spacing: .1em; color: #52657e; }
+.lab-shell button:focus-visible, .lab-shell a:focus-visible { outline: 2px solid #3366ff; outline-offset: 3px; }

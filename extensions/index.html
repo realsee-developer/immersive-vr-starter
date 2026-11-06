@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Realsee SDK task checks</title></head>
+<body>
+  <main>
+    <header><a href="https://developer.realsee.ai/docs/dnalogel">Realsee SDK guides</a><h1>Try the spatial interface tasks.</h1><p>One public scene. Real Dnalogel plugins and a silent Vreo camera-and-caption timeline. No credentials or Live room.</p></header>
+    <div class="workspace">
+      <section class="scene-panel" aria-label="Public spatial scene"><div id="viewer"></div><div id="narrative-ui"></div><p id="scene-status" role="status">Loading the public scene…</p></section>
+      <aside aria-label="Task controls">
+        <section><h2>Panorama tags</h2><p>Add a text hotspot two metres in front of the current camera.</p><div class="actions"><button id="add-tag" disabled>Add text hotspot</button><button id="remove-tag" disabled>Remove hotspot</button></div><p id="tag-status" role="status">Waiting for the scene.</p></section>
+        <section><h2>Measurements</h2><p>Start, then select points on the scene. Use Finish or Enter to end the measurement.</p><div class="actions"><button id="measure-start" disabled>Start measurement</button><button id="measure-end" disabled>Finish measurement</button><button id="measure-undo" disabled>Undo point</button><button id="measure-clear" disabled>Clear measurements</button><button id="measure-units" disabled>Use feet</button></div><p id="measure-status" role="status">Waiting for the scene.</p></section>
+        <section><h2>Silent spatial narrative</h2><p>An eight-second Vreo timeline rotates the camera and displays a caption. It uses the SDK’s built-in clock; there is no narration audio.</p><div class="actions"><button id="narrative-start" disabled>Play camera and caption</button><button id="narrative-pause" disabled>Pause narrative</button><button id="narrative-resume" disabled>Resume narrative</button><button id="narrative-stop" disabled>Stop narrative</button></div><p id="narrative-status" role="status">Waiting for the scene.</p><output id="narrative-time" aria-label="Narrative time">0.0 s</output></section>
+        <p class="boundary">Live room synchronization and voice need an authorized backend and participants. This page makes no Live service request.</p>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="/src/demo.ts"></script>
+</body>
+</html>
