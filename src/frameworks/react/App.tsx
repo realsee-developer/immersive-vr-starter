@@ -16,13 +16,13 @@ export function App() {
       <div ref={host} className="scene" role="region" aria-label="VR scene" aria-busy={state.phase === 'loading'} tabIndex={0} aria-keyshortcuts="F" />
       <div className="tour-shade" aria-hidden="true" />
       <header className="tour-heading">
-        <div><span className="tour-eyebrow">{state.source === 'demo' ? 'Public tour' : 'Your Team'}</span><h1>{state.title}</h1><p>Look around. Find your next perspective.</p></div>
+        <a className="tour-brand" href="https://developer.realsee.ai" target="_blank" rel="noreferrer">realsee<span>Spatial tour</span></a>
         <button className="glass-button" onClick={() => void tour.current?.showScenes()} aria-expanded={state.catalogOpen}>Spaces <span aria-hidden="true">▦</span></button>
       </header>
       {state.phase !== 'ready' && <div className="scene-loading" role="status"><span className="loading-mark" aria-hidden="true">◌</span><p>{state.message}</p>{state.phase === 'error' && <button className="glass-button" onClick={() => tour.current?.retry()}>Try again</button>}</div>}
       {state.notice && <div className="tour-notice" role="alert"><span>{state.notice}</span><button aria-label="Dismiss message" onClick={() => tour.current?.dismissNotice()}>×</button></div>}
       <footer className="tour-footer">
-        <a className="tour-brand" href="https://developer.realsee.ai" target="_blank" rel="noreferrer">realsee<span>Spatial tour</span></a>
+        <div className="tour-caption"><span className="tour-eyebrow">{state.source === 'demo' ? 'Public tour' : 'Your Team'}</span><h1>{state.title}</h1><p>Drag or swipe to look around.</p></div>
         <div className="tour-controls" role="group" aria-label="Tour controls">
           <button onClick={() => void tour.current?.changeMode()} disabled={state.phase !== 'ready'} aria-label={state.mode === 'Panorama' ? 'Switch to Floorplan' : 'Switch to Panorama'}><span aria-hidden="true">{state.mode === 'Panorama' ? '◇' : '◎'}</span>{state.mode === 'Panorama' ? 'Floorplan' : 'Panorama'}</button>
         </div>

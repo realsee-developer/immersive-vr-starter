@@ -4,10 +4,10 @@ const root = document.getElementById('root');
 if (!root) throw new Error('The root element is missing');
 root.innerHTML = `<main class="tour" aria-label="Immersive VR tour">
   <div class="scene" role="region" aria-label="VR scene" tabindex="0" aria-keyshortcuts="F"></div><div class="tour-shade" aria-hidden="true"></div>
-  <header class="tour-heading"><div><span class="tour-eyebrow" data-source></span><h1 data-title></h1><p>Look around. Find your next perspective.</p></div><button class="glass-button" data-action="spaces">Spaces <span aria-hidden="true">▦</span></button></header>
+  <header class="tour-heading"><a class="tour-brand" href="https://developer.realsee.ai" target="_blank" rel="noreferrer">realsee<span>Spatial tour</span></a><button class="glass-button" data-action="spaces">Spaces <span aria-hidden="true">▦</span></button></header>
   <div class="scene-loading" role="status" data-loading><span class="loading-mark" aria-hidden="true">◌</span><p data-message></p><button class="glass-button" data-action="retry" hidden>Try again</button></div>
   <div class="tour-notice" role="alert" data-notice hidden><span></span><button aria-label="Dismiss message" data-action="dismiss">×</button></div>
-  <footer class="tour-footer"><a class="tour-brand" href="https://developer.realsee.ai" target="_blank" rel="noreferrer">realsee<span>Spatial tour</span></a><div class="tour-controls" role="group" aria-label="Tour controls"><button data-action="mode"></button></div><button class="glass-button fullscreen-button" aria-label="Toggle fullscreen" data-action="fullscreen"><span aria-hidden="true">⛶</span></button></footer>
+  <footer class="tour-footer"><div class="tour-caption"><span class="tour-eyebrow" data-source></span><h1 data-title></h1><p>Drag or swipe to look around.</p></div><div class="tour-controls" role="group" aria-label="Tour controls"><button data-action="mode"></button></div><button class="glass-button fullscreen-button" aria-label="Toggle fullscreen" data-action="fullscreen"><span aria-hidden="true">⛶</span></button></footer>
   <span class="sr-only" role="status" aria-live="polite" data-status></span><section class="space-menu" aria-label="Spaces" data-catalog hidden></section>
 </main>`;
 const get = <T extends HTMLElement>(selector: string) => root.querySelector<T>(selector)!;
@@ -25,7 +25,7 @@ function update(state: TourState) {
   get('.scene').setAttribute('aria-busy', String(state.phase === 'loading'));
   get('[data-loading]').hidden = state.phase === 'ready'; text('[data-message]', state.message);
   get('[data-action="retry"]').hidden = state.phase !== 'error';
-  const mode = get<HTMLButtonElement>('[data-action="mode"]'); mode.textContent = state.mode === 'Panorama' ? '◇ Floorplan' : '◎ Panorama'; mode.setAttribute('aria-label', state.mode === 'Panorama' ? 'Switch to Floorplan' : 'Switch to Panorama'); mode.disabled = state.phase !== 'ready';
+  const mode = get<HTMLButtonElement>('[data-action="mode"]'); const modeIcon = document.createElement('span'); modeIcon.setAttribute('aria-hidden', 'true'); modeIcon.textContent = state.mode === 'Panorama' ? '◇' : '◎'; mode.replaceChildren(modeIcon, document.createTextNode(state.mode === 'Panorama' ? 'Floorplan' : 'Panorama')); mode.setAttribute('aria-label', state.mode === 'Panorama' ? 'Switch to Floorplan' : 'Switch to Panorama'); mode.disabled = state.phase !== 'ready';
   get('[data-notice]').hidden = !state.notice; text('[data-notice] span', state.notice);
   text('[data-status]', state.phase === 'ready' ? `Ready. ${state.mode} view.` : '');
   get('[data-action="spaces"]').setAttribute('aria-expanded', String(state.catalogOpen));

@@ -13,13 +13,13 @@ onUnmounted(() => tour?.dispose());
     <div ref="host" class="scene" role="region" aria-label="VR scene" :aria-busy="state.phase === 'loading'" tabindex="0" aria-keyshortcuts="F" />
     <div class="tour-shade" aria-hidden="true" />
     <header class="tour-heading">
-      <div><span class="tour-eyebrow">{{ state.source === 'demo' ? 'Public tour' : 'Your Team' }}</span><h1>{{ state.title }}</h1><p>Look around. Find your next perspective.</p></div>
+      <a class="tour-brand" href="https://developer.realsee.ai" target="_blank" rel="noreferrer">realsee<span>Spatial tour</span></a>
       <button class="glass-button" :aria-expanded="state.catalogOpen" @click="tour?.showScenes()">Spaces <span aria-hidden="true">▦</span></button>
     </header>
     <div v-if="state.phase !== 'ready'" class="scene-loading" role="status"><span class="loading-mark" aria-hidden="true">◌</span><p>{{ state.message }}</p><button v-if="state.phase === 'error'" class="glass-button" @click="tour?.retry()">Try again</button></div>
     <div v-if="state.notice" class="tour-notice" role="alert"><span>{{ state.notice }}</span><button aria-label="Dismiss message" @click="tour?.dismissNotice()">×</button></div>
     <footer class="tour-footer">
-      <a class="tour-brand" href="https://developer.realsee.ai" target="_blank" rel="noreferrer">realsee<span>Spatial tour</span></a>
+      <div class="tour-caption"><span class="tour-eyebrow">{{ state.source === 'demo' ? 'Public tour' : 'Your Team' }}</span><h1>{{ state.title }}</h1><p>Drag or swipe to look around.</p></div>
       <div class="tour-controls" role="group" aria-label="Tour controls">
         <button :disabled="state.phase !== 'ready'" :aria-label="state.mode === 'Panorama' ? 'Switch to Floorplan' : 'Switch to Panorama'" @click="tour?.changeMode()"><span aria-hidden="true">{{ state.mode === 'Panorama' ? '◇' : '◎' }}</span>{{ state.mode === 'Panorama' ? 'Floorplan' : 'Panorama' }}</button>
       </div>
